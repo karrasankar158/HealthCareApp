@@ -1,0 +1,90 @@
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Specialization Registration Page</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <style>
+      .row{
+          padding-bottom: 10px;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <div class="card-header bg-primary text-center text-white">
+          <h2>Specialization Register</h2>
+        </div>
+        <div class="card-body">
+          <form id="specForm" th:action="@{/spec/save}" method="POST">
+            <!-- row-1 -->
+            <div class="row">
+              <div class="col-2">
+                <label for="specCode">CODE<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="calo-4">
+                <input
+                  type="text"
+                  name="specCode"
+                  id="specCode"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-6">
+                <span id="specCodeError"></span>
+              </div>
+            </div>
+            <!-- row-2 -->
+            <div class="row">
+              <div class="col-2">
+                <label for="specName">NAME<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="calo-4">
+                <input
+                  type="text"
+                  name="specName"
+                  id="specName"
+                  class="form-control"
+                />
+              </div>
+              <div class="col-6">
+                <span id="specNameError"></span>
+              </div>
+            </div>
+            <!-- row-3 -->
+            <div class="row">
+              <div class="col-2">
+                <label for="specNote">NOTE<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="calo-4">
+                <textarea
+                  name="specNote"
+                  id="specNote"
+                  class="form-control"
+                ></textarea>
+              </div>
+              <div class="col-6">
+                <span id="specNoteError"></span>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-success">
+              Create<i class="far fa-plus-square"></i>
+            </button>
+          </form>
+        </div>
+        <div th:if="${message!=null}" class="card-footer bg-white text-info">
+          <span th:text="${message}"></span>  &nbsp&nbsp&nbsp    |  &nbsp&nbsp&nbsp  <a th:href="@{/spec/all}" class="btn btn-primary"><i class="fas fa-sign-in-alt"></i>Show Data</a>
+        </div>
+      </div>
+    </div>
+    <script th:src="@{/js/Specialization_validate.js}"></script>
+  </body>
+</html>
