@@ -61,8 +61,8 @@ public class DoctorController {
 			) {
 
 		List<Doctor> list=service.getAllDoctors();
+		model.addAttribute("list",list);
 		model.addAttribute("message",message);
-		model.addAttribute(list);
 		return "DoctorData";
 	}
 
