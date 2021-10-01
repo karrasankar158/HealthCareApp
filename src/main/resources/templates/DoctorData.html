@@ -21,6 +21,8 @@
         <div class="card-body">
             <table class="table table-hover">
             <tr class="bg-info text-white">
+            <!--For Not Recomended code case-1-->
+              <th>IMAGE</th>
               <th>NAME</th>
               <th>EMAIL</th>
               <th>MOBILE</th>
@@ -29,6 +31,10 @@
               <th>OPERATION</th>
             </tr>
             <tr th:each="ob:${list}">
+            <!--For Not Recomended code case-1-->
+                 <td>
+                 <img th:src="${ob.photosImagePath}" width="40" height="50"/>
+                 </td>
                  <td>[[${ob.firstName+ ' ' +ob.lastName}]]</td><!--Interpolation-->
                  <td th:text="${ob.email}"></td>
                 <td th:text="${ob.mobile}"></td>

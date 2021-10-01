@@ -24,7 +24,8 @@
           <h3>Doctor Register</h3>
         </div>
         <div class="card-body">
-          <form th:action="@{/doctor/save}" method="POST">
+           <!-- <form th:action="@{/doctor/save}" method="POST" enctype="multipart/form-data">-->
+          <form th:action="@{/doctor/save}" method="POST" enctype="multipart/form-data">
             <!-- ROW#1 -->
             <div class="row">
               <div class="col-2">
@@ -142,6 +143,19 @@
               </div>
               <div class="col-6">
                 <span id="noteError"></span>
+              </div>
+            </div>
+            <!-- For not Recommended case1 #Row8-->
+             <!-- ROW#8-->
+            <div class="row">
+              <div class="col-2">
+                <label for="docImage">Image<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="col-4">
+               <input type="file" name="docImage"  id="docImage" accept="image/png, image/jpeg" class="form-control"/>
+              </div>
+              <div class="col-6">
+                <span id="docImageError"></span>
               </div>
             </div>
             <button type="submit" class="btn btn-success">
