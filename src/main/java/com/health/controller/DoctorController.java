@@ -72,12 +72,13 @@ public class DoctorController {
 	@GetMapping("/delete")
 	public String delete(
 			@RequestParam("id") Long id,
+			@ModelAttribute Doctor doctor,
 			RedirectAttributes attributes
 			) {
 		String message=null;
 		try {
 			service.removeDoctor(id);
-			message="Doctor removed";
+			message=doctor.getId()+", Doctor removed";
 		}
 		catch(DoctorNotFoundException e) {
 			e.printStackTrace();
@@ -90,10 +91,37 @@ public class DoctorController {
 	/**
 	 * 5. Show edit
 	 */
-
+	@GetMapping("/edit")
+	public String edit(
+			@RequestParam("id") Long id,
+			Model model,
+			RedirectAttributes attributes
+			) {
+		String page=null;
+		try {
+			Doctor doc=service.getOneDoctor(id);
+			model.addAttribute("doctor",doc);
+			page="DoctorEdit";
+		}
+		catch(DoctorNotFoundException e) {
+			e.printStackTrace();
+			attributes.addAttribute("message",e.getMessage());
+			page="redirect:all";
+		}
+		return page;
+	}
 	/**
 	 * 6. Do update
 	 */
+	@PostMapping("/update")
+	public String doUpdate(
+			@ModelAttribute Doctor doctor,
+			RedirectAttributes attributes
+			) {
+		service.updateDoctor(doctor);
+		attributes.addAttribute("message",doctor.getId()+ ", updated!");
+		return "redirect:all";
+	}
 	/**
 	 * 7. Email and mobile duplicate validations(AJAX)
 	 */

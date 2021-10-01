@@ -24,8 +24,24 @@
           <h3>Doctor Register</h3>
         </div>
         <div class="card-body">
-          <form th:action="@{/doctor/save}" method="POST">
-            <!-- ROW#1 -->
+          <form th:action="@{/doctor/update}" method="POST" th:object="${doctor}">
+          <!-- row#1 -->
+            <div class="row">
+              <div class="col-2">
+                <label for="id">ID<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="calo-4">
+                <input
+                  type="text"
+                  th:field="*{id}"
+                  class="form-control"
+               readOnly />
+              </div>
+              <div class="col-6">
+                <span id="idError"></span>
+              </div>
+            </div>
+            <!-- ROW#2 -->
             <div class="row">
               <div class="col-2">
                 <label for="firstName">FirstName<sup class="text-danger">*</sup></label>
@@ -33,8 +49,7 @@
               <div class="col-4">
                 <input
                   type="text"
-                  name="firstName"
-                  id="firstName"
+                  th:field="*{firstName}"
                   class="form-control"
                 />
               </div>
@@ -42,7 +57,7 @@
                 <span id="firstNameError"></span>
               </div>
             </div>
-            <!-- ROW#2 -->
+            <!-- ROW#3 -->
             <div class="row">
               <div class="col-2">
                 <label for="lastName">LastName<sup class="text-danger">*</sup></label>
@@ -50,8 +65,7 @@
               <div class="col-4">
                 <input
                   type="text"
-                  name="lastName"
-                  id="lastName"
+                  th:field="*{lastName}"
                   class="form-control"
                 />
               </div>
@@ -59,7 +73,7 @@
                 <span id="lastNameError"></span>
               </div>
             </div>
-            <!-- ROW#3-->
+            <!-- ROW#4 -->
             <div class="row">
               <div class="col-2">
                 <label for="email">Email<sup class="text-danger">*</sup></label>
@@ -67,8 +81,7 @@
               <div class="col-4">
                 <input
                   type="text"
-                  name="email"
-                  id="email"
+                  th:field="*{email}"
                   class="form-control"
                 />
               </div>
@@ -76,15 +89,14 @@
                 <span id="emailError"></span>
               </div>
             </div>
-            <!-- ROW#4-->
+            <!-- ROW#5 -->
             <div class="row">
               <div class="col-2">
                 <label for="address">Address<sup class="text-danger">*</sup></label>
               </div>
               <div class="col-4">
                 <textarea
-                  name="address"
-                  id="address"
+                  th:field="*{address}"
                   class="form-control"
                 ></textarea>
               </div>
@@ -92,7 +104,7 @@
                 <span id="addressError"></span>
               </div>
             </div>
-            <!-- ROW#5-->
+            <!-- ROW#6 -->
             <div class="row">
               <div class="col-2">
                 <label for="mobile">Mobile<sup class="text-danger">*</sup></label>
@@ -100,8 +112,7 @@
               <div class="col-4">
                 <input
                   type="text"
-                  name="mobile"
-                  id="mobile"
+                  th:field="*{mobile}"
                   class="form-control"
                 />
               </div>
@@ -109,7 +120,7 @@
                 <span id="mobileError"></span>
               </div>
             </div>
-            <!-- ROW#6-->
+            <!-- ROW#7 -->
             <div class="row">
               <div class="col-2">
                 <label>Gender<sup class="text-danger">*</sup></label>
@@ -117,14 +128,12 @@
               <div class="col-4">
                 <input
                   type="radio"
-                  name="gender"
-                  id="gender1"
+                  th:field="*{gender}"
                   value="Male"
                 />Male
                 <input
                   type="radio"
-                  name="gender"
-                  id="gender2"
+                  th:field="*{gender}"
                   value="FeMale"
                 />FeMale
               </div>
@@ -132,20 +141,20 @@
                 <span id="genderError"></span>
               </div>
             </div>
-            <!-- ROW#7-->
+            <!-- ROW#8 -->
             <div class="row">
               <div class="col-2">
                 <label for="note">Note<sup class="text-danger">*</sup></label>
               </div>
               <div class="col-4">
-                <textarea name="note" id="note" class="form-control"></textarea>
+                <textarea th:field="*{note}" class="form-control"></textarea>
               </div>
               <div class="col-6">
                 <span id="noteError"></span>
               </div>
             </div>
             <button type="submit" class="btn btn-success">
-              Create<i class="far fa-plus-square"></i>
+              Update<i class="far fa-plus-square"></i>
             </button>
           </form>
         </div>
