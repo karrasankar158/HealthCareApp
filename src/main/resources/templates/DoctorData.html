@@ -23,6 +23,8 @@
             <tr class="bg-info text-white">
             <!--For Not Recomended code case-1-->
               <th>IMAGE</th>
+              <!--Case-2-->
+               <th> </th>
               <th>NAME</th>
               <th>EMAIL</th>
               <th>MOBILE</th>
@@ -31,9 +33,13 @@
               <th>OPERATION</th>
             </tr>
             <tr th:each="ob:${list}">
-            <!--For Not Recomended code case-1-->
+            <!--For Not Recomended code case-1
                  <td>
                  <img th:src="${ob.photosImagePath}" width="40" height="50"/>
+                 </td>-->
+                 <!--Case2-->
+                 <td>
+                 <img th:src="${ob.photoLoc}" width="40" height="50"/>
                  </td>
                  <td>[[${ob.firstName+ ' ' +ob.lastName}]]</td><!--Interpolation-->
                  <td th:text="${ob.email}"></td>

@@ -6,7 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Transient;
+//import javax.persistence.Transient;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -50,18 +50,22 @@ public class Doctor {
 	@Column(name = "doc_note_col")
 	private String note;
 
-	@Column(name="image")
+	/*@Column(name="image")
 	private String photos;
 
-	/**
+
 	 * Not recommended way case-1
 	 * @Transient, saying provide default value to and hide original value
-	 */
+
 	@Transient
 	private String photosImagePath;
 
 	public String getPhotosImagePath() {
 		if (photos == null || id == null) return null;
 		return "/user-photos/" + id + "/" + photos;
-	}
+	}*/
+	//Second way
+	@Column(name="image")
+	private String photoLoc;
+
 }
