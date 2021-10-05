@@ -19,9 +19,9 @@ import lombok.NoArgsConstructor;
 public class Specialization {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO) //suitable for all Databases
+	//@GeneratedValue(strategy = GenerationType.AUTO) //suitable for all Databases
 	//@GeneratedValue(strategy = GenerationType.SEQUENCE)// for Oracle sql
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)// for mysql
+	@GeneratedValue(strategy = GenerationType.IDENTITY)// for mysql
 	@Column(name = "spec_id_col")
 	private Long id;
 
