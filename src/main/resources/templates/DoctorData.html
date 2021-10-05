@@ -27,6 +27,8 @@
                <th> </th>
               <th>NAME</th>
               <th>EMAIL</th>
+              <!--for Module Integration-->
+              <th>SPECIALIZATION</th>
               <th>MOBILE</th>
               <th>NOTE</th>
               <th>ADDRESS</th>
@@ -43,6 +45,7 @@
                  </td>
                  <td>[[${ob.firstName+ ' ' +ob.lastName}]]</td><!--Interpolation-->
                  <td th:text="${ob.email}"></td>
+                 <td th:text="${ob.specialization.specName}"></td>
                 <td th:text="${ob.mobile}"></td>
                 <td th:text="${ob.note}"></td>
                 <td th:text="${ob.address}"></td>

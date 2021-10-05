@@ -89,7 +89,22 @@
                 <span id="emailError"></span>
               </div>
             </div>
-            <!-- ROW#5 -->
+            <!-- ROW#5 row integration or dynamic drop down-->
+            <div class="row">
+              <div class="col-2">
+                <label for="specialization">Specialization<sup class="text-danger">*</sup></label>
+              </div>
+              <div class="col-4">
+                <select th:field="*{specialization}" name="specialization.id" class="form-control">
+                <option value="">-SELECT-</option>
+                <option th:each="ob:${specializations}" th:value="${ob.key}" th:text="${ob.value}"></option>
+                </select>
+              </div>
+              <div class="col-6">
+                <span id="specializationError"></span>
+              </div>
+            </div>
+            <!-- ROW#6 -->
             <div class="row">
               <div class="col-2">
                 <label for="address">Address<sup class="text-danger">*</sup></label>
@@ -104,7 +119,7 @@
                 <span id="addressError"></span>
               </div>
             </div>
-            <!-- ROW#6 -->
+            <!-- ROW#7 -->
             <div class="row">
               <div class="col-2">
                 <label for="mobile">Mobile<sup class="text-danger">*</sup></label>
@@ -120,7 +135,7 @@
                 <span id="mobileError"></span>
               </div>
             </div>
-            <!-- ROW#7 -->
+            <!-- ROW#8 -->
             <div class="row">
               <div class="col-2">
                 <label>Gender<sup class="text-danger">*</sup></label>
@@ -141,7 +156,7 @@
                 <span id="genderError"></span>
               </div>
             </div>
-            <!-- ROW#8 -->
+            <!-- ROW#9 -->
             <div class="row">
               <div class="col-2">
                 <label for="note">Note<sup class="text-danger">*</sup></label>
@@ -153,7 +168,7 @@
                 <span id="noteError"></span>
               </div>
             </div>
-            <!-- ROW#9case-2-->
+            <!-- ROW#10case-2-->
             <div class="row">
               <div class="col-2">
                 <label for="photoLoc">Image<sup class="text-danger">*</sup></label>

@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.health.entity.Doctor;
 import com.health.exception.DoctorNotFoundException;
 import com.health.service.IDoctorService;
+import com.health.service.ISpecializationService;
 //import com.health.util.FileUploadUtil;
 /**
  * Doctor Controller 
@@ -31,6 +32,19 @@ public class DoctorController {
 	@Autowired
 	private IDoctorService service;
 
+	//for module integration
+	@Autowired
+	private ISpecializationService speService;
+
+	/**
+	 * For Integration purpose 
+	 */
+	private void createDynamicUI(
+			Model model
+			){
+		model.addAttribute("specializations", speService.getSpecIdAndName());
+	}
+
 	/**
 	 * 1. Show register page
 	 */
@@ -40,48 +54,50 @@ public class DoctorController {
 			Model model
 			) {
 		model.addAttribute("message",message);
+		//calling Module integration method
+		createDynamicUI(model);
 		return "DoctorRegister";
 	}
 
-		/**
-		 * 2. Save on submit
-		 */
-		@PostMapping("/save")
-		public String save(
-				@ModelAttribute Doctor doctor,
-				RedirectAttributes attributes
-				) {
-			Long id=service.saveDoctor(doctor);
-			attributes.addAttribute("message","Doctor ( "+id+" ) is created");
-			return "redirect:register";
-		}
+	/**
+	 * 2. Save on submit
+	 */
+	@PostMapping("/save")
+	public String save(
+			@ModelAttribute Doctor doctor,
+			RedirectAttributes attributes
+			) {
+		Long id=service.saveDoctor(doctor);
+		attributes.addAttribute("message","Doctor ( "+id+" ) is created");
+		return "redirect:register";
+	}
 
-//	/**
-//	 * For Not Recommended case-1
-//	 * 2. Save on submit
-//	 */
-//	@PostMapping("/save")
-//	public String save(
-//			@ModelAttribute Doctor doctor,
-//			@RequestParam("docImage") MultipartFile multipartFile,
-//			RedirectAttributes attributes
-//			) {
-//
-//		String fileName=StringUtils.cleanPath(multipartFile.getOriginalFilename());
-//		
-//		doctor.setPhotos(fileName);
-//		Long id=service.saveDoctor(doctor);
-//		attributes.addAttribute("message","Doctor ( "+id+" ) is created");
-//		
-//		String uploadDir="user-photos/"+id;
-//		try {
-//			FileUploadUtil.saveFile(uploadDir, fileName,multipartFile);
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//		}
-//		
-//		return "redirect:register";
-//	}
+	//	/**
+	//	 * For Not Recommended case-1
+	//	 * 2. Save on submit
+	//	 */
+	//	@PostMapping("/save")
+	//	public String save(
+	//			@ModelAttribute Doctor doctor,
+	//			@RequestParam("docImage") MultipartFile multipartFile,
+	//			RedirectAttributes attributes
+	//			) {
+	//
+	//		String fileName=StringUtils.cleanPath(multipartFile.getOriginalFilename());
+	//		
+	//		doctor.setPhotos(fileName);
+	//		Long id=service.saveDoctor(doctor);
+	//		attributes.addAttribute("message","Doctor ( "+id+" ) is created");
+	//		
+	//		String uploadDir="user-photos/"+id;
+	//		try {
+	//			FileUploadUtil.saveFile(uploadDir, fileName,multipartFile);
+	//		} catch (Exception e) {
+	//			e.printStackTrace();
+	//		}
+	//		
+	//		return "redirect:register";
+	//	}
 
 	/**
 	 * 3. Display Doctors data
@@ -132,6 +148,9 @@ public class DoctorController {
 		try {
 			Doctor doc=service.getOneDoctor(id);
 			model.addAttribute("doctor",doc);
+			
+			//calling Module integration method
+			createDynamicUI(model);
 			page="DoctorEdit";
 		}
 		catch(DoctorNotFoundException e) {

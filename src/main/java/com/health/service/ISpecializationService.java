@@ -1,6 +1,7 @@
 package com.health.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.health.entity.Specialization;
 
@@ -19,6 +20,9 @@ public interface ISpecializationService {
 	//Used for AJAX Edit page Bug fix, Already exist
 	public boolean isSpecCodeExistForEdit(String specCode,Long id);
 	public boolean isSpecNameExistForEdit(String specName,Long id);
+	
+	//for Integration Purpose, it displays primary key and display code
+	Map<Long,String> getSpecIdAndName();
 
 
 }

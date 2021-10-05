@@ -2,6 +2,7 @@ package com.health.service.impl;
 
 import java.util.List;
 //import java.util.Optional;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import com.health.entity.Specialization;
 import com.health.exception.SpecializationNotFoundException;
 import com.health.repository.SpecializationRepository;
 import com.health.service.ISpecializationService;
+import com.health.util.MyCollectionsUtil;
 
 @Service
 public class SpecializationServiceImpl implements ISpecializationService {
@@ -75,5 +77,14 @@ public class SpecializationServiceImpl implements ISpecializationService {
 	@Override
 	public boolean isSpecNameExistForEdit(String specName, Long id) {
 		return repository.getSpecNameCountForEdit(specName,id)>0;
+	}
+//For Specialization Integration
+	@Override
+	public Map<Long, String> getSpecIdAndName() {
+	List<Object[]> list=repository.getSpecIdAndName();
+	
+	//for Converting List to map
+	Map<Long,String> map=MyCollectionsUtil.convertToMap(list);
+		return map;
 	}
 }
