@@ -146,9 +146,14 @@ public class DoctorController {
 			) {
 		String page=null;
 		try {
+
+			//for image Display in Edit page
+			List<Doctor> list=service.getAllDoctors();
+			model.addAttribute("list",list);
+
 			Doctor doc=service.getOneDoctor(id);
 			model.addAttribute("doctor",doc);
-			
+
 			//calling Module integration method
 			createDynamicUI(model);
 			page="DoctorEdit";

@@ -67,7 +67,7 @@ public class Doctor {
 		return "/user-photos/" + id + "/" + photos;
 	}*/
 	//Second way
-	@Column(name="image")
+	@Column(name="doc_img_col")
 	private String photoLoc;
 	
 	/**
