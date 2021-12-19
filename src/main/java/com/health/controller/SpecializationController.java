@@ -17,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.health.entity.Specialization;
 import com.health.exception.SpecializationNotFoundException;
 import com.health.service.ISpecializationService;
+import com.health.view.SpecializationCSVExportView;
 import com.health.view.SpecializationExcelExportView;
 import com.health.view.SpecializationPDFExportView;
 
@@ -26,6 +27,9 @@ public class SpecializationController {
 
 	@Autowired
 	private ISpecializationService service;
+
+	@Autowired
+	private SpecializationCSVExportView view;
 
 	/**
 	 * 1. Show register page 
@@ -192,4 +196,15 @@ public class SpecializationController {
 		m.addObject("list",list);
 		return m;
 	}
+
+	/**
+	 * 10. Export data to CSV file
+	 */
+	@GetMapping("/csv")
+	@ResponseBody
+	public  void exportToCSV() {
+		view.exportToCSV();
+	}
+
+
 }

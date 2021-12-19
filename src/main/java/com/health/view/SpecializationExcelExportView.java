@@ -44,7 +44,7 @@ public class SpecializationExcelExportView extends AbstractXlsView{
 		row.createCell(0).setCellValue("ID");
 		row.createCell(1).setCellValue("CODE");
 		row.createCell(2).setCellValue("NAME");
-		row.createCell(4).setCellValue("NOTE");
+		row.createCell(3).setCellValue("NOTE");
 	}
 	private void  setBody(Sheet sheet,List<Specialization> list) {
 		int rowNum=1;
@@ -54,7 +54,7 @@ public class SpecializationExcelExportView extends AbstractXlsView{
 			row.createCell(0).setCellValue(spec.getId());
 			row.createCell(1).setCellValue(spec.getSpecCode());
 			row.createCell(2).setCellValue(spec.getSpecName());
-			row.createCell(4).setCellValue(spec.getSpecNote());
+			row.createCell(3).setCellValue(spec.getSpecNote());
 		}
 
 	}
